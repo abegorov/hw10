@@ -31,6 +31,12 @@ function install_jenkins() {
 
 function install_agent() {
     install_docker
+    cat <<EOF > /etc/docker/daemon.json
+{
+  "insecure-registries" : ["10.129.0.8:8080"]
+}
+EOF
+    systemctl reload docker
     apt install --yes openjdk-11-jre-headless
     if ! grep --fixed-strings --line-regexp "$JENKINS_PUBKEY" "/root/.ssh/authorized_keys" > /dev/null; then
         echo "$JENKINS_PUBKEY" >> "/root/.ssh/authorized_keys"
