@@ -24,7 +24,7 @@ function install_docker() {
 function install_jenkins() {
     install_docker
     docker compose --file jenkins.yml up -d
-    if [[ -f "$JENKINS_KEYFILE" ]]; then
+    if [[ ! -f "$JENKINS_KEYFILE" ]]; then
         ssh-keygen -q -t ed25519 -f "$JENKINS_KEYFILE" -N ""
     fi
 }
