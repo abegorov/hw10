@@ -7,7 +7,7 @@ set -xe
 
 function install_docker() {
     apt update
-    apt install ca-certificates curl gnupg
+    apt install --yes ca-certificates curl gnupg
     install -m 0755 -d /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/$(. /etc/os-release && echo "$ID")/gpg \
         | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -18,7 +18,7 @@ function install_docker() {
             $(. /etc/os-release && echo "$VERSION_CODENAME") stable \
         > /etc/apt/sources.list.d/docker.list
     apt update
-    apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    apt install --yes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 }
 
 function install_jenkins() {
