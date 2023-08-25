@@ -23,7 +23,7 @@ function install_docker() {
 
 function install_jenkins() {
     install_docker
-    docker compose --file jenkins.yml up
+    docker compose --file jenkins.yml up -d
     if [[ -f "$JENKINS_KEYFILE" ]]; then
         ssh-keygen -q -t ed25519 -f "$JENKINS_KEYFILE" -N ""
     fi
@@ -39,7 +39,7 @@ function install_agent() {
 function install_nexus()
 {
     install_docker
-    docker compose --file nexus.yml up
+    docker compose --file nexus.yml up -d
 }
 
 case "$1" in
