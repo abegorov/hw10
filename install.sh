@@ -31,6 +31,7 @@ function install_jenkins() {
 
 function install_agent() {
     install_docker
+    apt install --yes openjdk-11-jre-headless
     if ! grep --fixed-strings --line-regexp "$JENKINS_PUBKEY" "/root/.ssh/authorized_keys" > /dev/null; then
         echo "$JENKINS_PUBKEY" >> "/root/.ssh/authorized_keys"
     fi
