@@ -1,0 +1,19 @@
+---
+services:
+  nexus:
+    image: sonatype/nexus3:latest
+    container_name: nexus
+    ports:
+      - "80:8080"
+    volumes:
+      - "nexus-data:/nexus-data"
+    networks:
+      - nexus
+    stop_grace_period: 2m
+    restart: on-failure
+
+volumes:
+  nexus-data:
+
+networks:
+  nexus:
