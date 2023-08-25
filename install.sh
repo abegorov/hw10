@@ -1,7 +1,7 @@
 #!/bin/bash
 
 JENKINS_KEYFILE="$HOME/.ssh/jenkins_agent_key"
-JENKINS_PUBKEY=""
+JENKINS_PUBKEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFB3Rq/cwFMYwA4VKbdEpoaxB5Rz8kC04WA1rqLPiGwU jenkins"
 
 set -xe
 
